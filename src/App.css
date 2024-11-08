@@ -1,6 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+/* src/index.css or src/App.css */
+@import "~font-awesome/css/font-awesome.min.css";
 
 .App {
   text-align: center;
