@@ -76,8 +76,8 @@ export class Employee extends Component {
   };
 
   changeSalary = (e) => {
-    const salary = parseFloat(e.target.value).toFixed(2);
-    this.setState({ Salary: salary });
+    //const salary = parseFloat(e.target.value).toFixed(2);
+    this.setState({ Salary: e.target.value });
   };
 
   changeDepartment = (e) => {
@@ -121,14 +121,13 @@ export class Employee extends Component {
   }
 
   createClick() {
-    const salary = parseFloat(this.state.Salary);
     if (
-      (this.state.Email.includes("@") &&
-        this.state.FirstName &&
-        this.state.LastName &&
-        this.state.Dob &&
-        isNaN(salary)) ||
-      (salary <= 0 && this.state.Department)
+      this.state.Email.includes("@") &&
+      this.state.FirstName &&
+      this.state.LastName &&
+      this.state.Dob &&
+      this.state.Salary != null &&
+      this.state.Department
     ) {
       fetch(variables.API_URL + "employee", {
         method: "POST",
@@ -163,14 +162,13 @@ export class Employee extends Component {
   }
 
   updateClick() {
-    const salary = parseFloat(this.state.Salary);
     if (
-      (this.state.Email.includes("@") &&
-        this.state.FirstName &&
-        this.state.LastName &&
-        this.state.Dob &&
-        isNaN(salary)) ||
-      (salary <= 0 && this.state.Department)
+      this.state.Email.includes("@") &&
+      this.state.FirstName &&
+      this.state.LastName &&
+      this.state.Dob &&
+      this.state.Salary != null &&
+      this.state.Department
     ) {
       fetch(variables.API_URL + "employee", {
         method: "PUT",
@@ -397,7 +395,7 @@ export class Employee extends Component {
                     <input
                       type="number"
                       className="form-input py-2 px-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                      value={parseFloat(Salary).toFixed(2)}
+                      value={Salary}
                       onChange={this.changeSalary}
                     />
                   </div>
