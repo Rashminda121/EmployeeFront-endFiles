@@ -58,7 +58,7 @@ export class Department extends Component {
   }
 
   createClick() {
-    if (this.state.DepartmentName && this.state.DepartmentName == null) {
+    if (this.state.DepartmentName && this.state.DepartmentName != null) {
     fetch(variables.API_URL + "department", {
       method: "POST",
       headers: {
