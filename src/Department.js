@@ -58,6 +58,7 @@ export class Department extends Component {
   }
 
   createClick() {
+    if (this.state.DepartmentName && this.state.DepartmentName == null) {
     fetch(variables.API_URL + "department", {
       method: "POST",
       headers: {
@@ -79,9 +80,18 @@ export class Department extends Component {
       )
     );
     this.setState({ isModalOpen: false });
+  } else {
+      alert("Missing Fields or Invalid data!");
+    }
   }
 
   updateClick() {
+  if (
+      this.state.DepartmentName &&
+      this.state.DepartmentName != null &&
+      this.state.DepartmentId &&
+      this.state.DepartmentId != null
+    ) {
     fetch(variables.API_URL + "department", {
       method: "PUT",
       headers: {
@@ -104,6 +114,9 @@ export class Department extends Component {
       )
     );
     this.setState({ isModalOpen: false });
+    } else {
+      alert("Missing Fields or Invalid data!");
+    }
   }
 
   deleteClick(id) {
